@@ -184,7 +184,6 @@ public class ExcelHandler implements ApplicationRunner {
                       .filter(map -> map.get("CD_NM").equals(cell.getStringCellValue().trim()))
                       .map(e -> e.get("CD"))
                       .collect(Collectors.toList());
-
                     if(chek_relt_cd.size() > 1)
                       log.error("검사결과코드 필터갯수가 하나 이상 발견됨 : {}",chek_relt_cd.size());
                     if(chek_relt_cd.size() == 0) {
@@ -302,7 +301,7 @@ public class ExcelHandler implements ApplicationRunner {
   private void writeExcelSheet(XSSFWorkbook wb) {
     try (BufferedOutputStream outputStream =
            new BufferedOutputStream(
-             new FileOutputStream("C:/Users/YooJaeYeong/Desktop/excel2/"+filename+".xlsx"));){
+             new FileOutputStream("C:/Users/YooJaeYeong/Desktop/excel2/"+filename));){
       log.warn("엑셀저장중>>>>>");
       wb.write(outputStream);
     }catch (Exception e) {
